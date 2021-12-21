@@ -104,9 +104,9 @@ if [[ ${dbA[0]} == "mysql" ]]; then
     exit -1
   fi
 
-  sbDbCreds=(--mysql-user=${dbA[1]} --mysql-password=${dbA[2]} --mysql-host=${dbA[3]} --mysql-db=${dbA[4]})
+  sbDbCreds=(--mysql-user=${dbA[1]} --mysql-password=${dbA[2]} --mysql-socket=${dbA[3]} --mysql-db=${dbA[4]})
   export MYSQL_PWD=${dbA[2]}
-  clientArgs=(-u${dbA[1]} -h${dbA[3]} ${dbA[4]})
+  clientArgs=(-u${dbA[1]} --socket=${dbA[3]} ${dbA[4]})
   engine=${dbA[5]}
   engineArg="--mysql-storage-engine=$engine"
   sqlF=e
@@ -236,9 +236,9 @@ if [[ $dbpid -ne -1 && $nt -eq 1 ]] ; then
 fi
 
 if [[ $testType == "scan" ]]; then
-  exA=(--db-driver=$driver --range-size=$range --table-size=$nr --tables=$ntabs --threads=$nt --events=1 --warmup-time=0 --time=0 $sysbdir/share/sysbench/$lua run)
+  exA=(--db-driver=$driver --range-size=$range --table-size=$nr --tables=$ntabs --threads=$nt --events=1 --thread-init-timeout=120 --warmup-time=0 --time=0 $sysbdir/share/sysbench/$lua run)
 else
-  exA=(--db-driver=$driver --range-size=$range --table-size=$nr --tables=$ntabs --threads=$nt --events=0 --warmup-time=5 --time=$secs $sysbdir/share/sysbench/$lua run)
+  exA=(--db-driver=$driver --range-size=$range --table-size=$nr --tables=$ntabs --threads=$nt --events=0 --thread-init-timeout=120 --warmup-time=5 --time=$secs $sysbdir/share/sysbench/$lua run)
 fi
 
 echo $sysbdir/bin/sysbench "${exA[@]}" "${sbDbCreds[@]}" "${testArgs[@]}"  > sb.o.$sfxn

@@ -77,14 +77,14 @@ BULK_SYNC_SIZE=${BULK_SYNC_SIZE:-0}
 TABLE_OPTIONS=none
 USE_PK=${USE_PK:-1}
 HOST="/tmp/mysql.sock"
-HOST="127.0.0.1"
+#HOST="127.0.0.1"
 dbAndCreds=mysql,root,pw,$HOST,test,$ENGINE # dbAndCreds=mysql,user,password,host,db,engine
 WORKLOAD_SCRIPT=${WORKLOAD_SCRIPT:=all_wdc.sh}
 
 # SYSBENCH="$SYSBENCH_DIR/bin/sysbench --rand-type=uniform --db-driver=mysql --mysql-user=root --mysql-password=pw --mysql-host=127.0.0.1 --mysql-db=test --mysql-storage-engine=$ENGINE "
 # SYSBENCH+="--table-size=$NROWS --tables=$NTABS --events=0 --report-interval=10 --create_secondary=off --mysql-ignore-errors=1062,1213"
 
-CLIENT_OPT_NOPASS="-hlocalhost -uroot"
+CLIENT_OPT_NOPASS="--socket=$HOST -uroot"
 CLIENT_OPT="$CLIENT_OPT_NOPASS -ppw"
 ZENFS_TOOL=$MYSQLDIR/bin/zenfs
 
@@ -261,7 +261,7 @@ if [ "${COMMAND_NAME}" == "init" ]; then
     mkdir -p $DATADIR
   fi
 #  cp $MYSQLDIR/bin/mysqld-debug $MYSQLDIR/bin/mysqld
-  $MYSQLDIR/bin/mysqld --initialize-insecure --basedir=$MYSQLDIR --datadir=$DATADIR --log-error-verbosity=2 --log-error=$ROOTDIR/log.err
+  $MYSQLDIR/bin/mysqld --initialize-insecure --basedir=$MYSQLDIR --datadir=$DATADIR --socket=$HOST --log-error-verbosity=2 --log-error=$ROOTDIR/log.err
 
   ADDITIONAL_PARAMS="--disable-log-bin"
   if [ "$BULK_LOAD" == "1" ]; then

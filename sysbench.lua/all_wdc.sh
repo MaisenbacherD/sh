@@ -35,6 +35,19 @@ bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-
 echo write-only, run 4
 bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-4      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
 
+echo write-only, run 5
+bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-5      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
+
+echo write-only, run 6
+bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-6      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
+
+echo write-only, run 7
+bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-7      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
+
+echo write-only, run 8
+bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-8      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
+
+
 # This does load, runs a query test and then does "postwrite" work
 #echo point-query.warm
 #bash run.sh $ntabs $nrows $readsecs  $dbAndCreds $setup 0        point-query.warm 100    $client $tableoptions $sysbdir $ddir $dname $usepk 1 $sync_size $@
@@ -61,17 +74,17 @@ bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        update-one     
 echo update-zipf
 bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        update-zipf      100    $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
 
-echo write-only, run 5
-bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-5      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
+echo write-only, run 9
+bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-9      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
 
-echo write-only, run 6
-bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-6      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
+echo write-only, run 10
+bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-10      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
 
-echo write-only, run 7
-bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-7      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
+echo write-only, run 11
+bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-11      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
 
-echo write-only, run 8
-bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-8      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
+echo write-only, run 12
+bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        write-only.run-12      100 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
 
 echo read-write range 10
 bash run.sh $ntabs $nrows $writesecs $dbAndCreds 0      0        read-write      10 $client $tableoptions $sysbdir $ddir $dname $usepk $pwr $sync_size $@
