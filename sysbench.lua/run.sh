@@ -34,6 +34,7 @@ elif [[ $testType == "read-only-count" ]]; then
 elif [[ $testType == "read-write" ]]; then
   lua="oltp_read_write.lua"
 elif [[ $testType == "write-only" || $testType == "write-only.run-"* ]]; then
+  testArgs=(--delete_inserts=20 --index_updates=1 --non_index_updates=1)
   lua="oltp_write_only.lua"
 elif [[ $testType == "delete" ]]; then
   lua="oltp_delete.lua"
